@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Domain Randomization - AirSim</title>
+  <title>Modifying Recording Data - AirSim</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Domain Randomization";
-    var mkdocs_page_input_path = "retexturing.md";
+    var mkdocs_page_name = "Modifying Recording Data";
+    var mkdocs_page_input_path = "modify_recording_data.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Using AirSim</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../apis/">Core APIs</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../image_apis/">Image APIs</a>
@@ -122,15 +122,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../gazebo_drone/">Import Gazebo models</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Domain Randomization</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-make-an-actor-retexturable">How to Make An Actor Retexturable</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-define-the-sets-of-textures-to-choose-from">How to Define the Set(s) of Textures to Choose From</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-swap-textures-from-the-api">How to Swap Textures from the API</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../retexturing/">Domain Randomization</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../meshes/">Mesh Vertex Buffers</a>
                     </li>
@@ -142,14 +134,18 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Design</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../design/">Architecture</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../adding_new_apis/">Adding new APIs</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Modifying Recording Data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#code-changes">Code Changes</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
                     </li>
@@ -292,14 +288,14 @@
     
       
         
-          <li>Using AirSim &raquo;</li>
+          <li>Design &raquo;</li>
         
       
     
-    <li>Domain Randomization</li>
+    <li>Modifying Recording Data</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/microsoft/airsim/edit/master/docs/retexturing.md"
+        <a href="https://github.com/microsoft/airsim/edit/master/docs/modify_recording_data.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -311,49 +307,46 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="runtime-texture-swapping">Runtime Texture Swapping<a class="headerlink" href="#runtime-texture-swapping" title="Permanent link">#</a></h1>
-<h2 id="how-to-make-an-actor-retexturable">How to Make An Actor Retexturable<a class="headerlink" href="#how-to-make-an-actor-retexturable" title="Permanent link">#</a></h2>
-<p>To be made texture-swappable, an actor must derive from the parent class TextureShuffleActor.
-The parent class can be set via the settings tab in the actor's blueprint.</p>
-<p><img alt="Parent Class" src="../images/tex_shuffle_actor.png" /></p>
-<p>After setting the parent class to TextureShuffActor, the object gains the member DynamicMaterial.
-DynamicMaterial needs to be set--on all actor instances in the scene--to TextureSwappableMaterial.
-Warning: Statically setting the Dynamic Material in the blueprint class may cause rendering errors. It seems to work better to set it on all the actor instances in the scene, using the details panel.</p>
-<p><img alt="TextureSwappableMaterial" src="../images/tex_swap_material.png" /></p>
-<h2 id="how-to-define-the-sets-of-textures-to-choose-from">How to Define the Set(s) of Textures to Choose From<a class="headerlink" href="#how-to-define-the-sets-of-textures-to-choose-from" title="Permanent link">#</a></h2>
-<p>Typically, certain subsets of actors will share a set of texture options with each other. (e.g. walls that are part of the same building)</p>
-<p>It's easy to set up these groupings by using Unreal Engine's group editing functionality.
-Select all the instances that should have the same texture selection, and add the textures to all of them simultaneously via the Details panel.
-Use the same technique to add descriptive tags to groups of actors, which will be used to address them in the API.</p>
-<p><img alt="Group Editing" src="../images/tex_swap_group_editing.png" /></p>
-<p>It's ideal to work from larger groupings to smaller groupings, simply deselecting actors to narrow down the grouping as you go, and applying any individual actor properties last.</p>
-<p><img alt="Subset Editing" src="../images/tex_swap_subset.png" /></p>
-<h2 id="how-to-swap-textures-from-the-api">How to Swap Textures from the API<a class="headerlink" href="#how-to-swap-textures-from-the-api" title="Permanent link">#</a></h2>
-<p>The following API is available in C++ and python. (C++ shown)</p>
-<pre class="highlight"><code class="language-C++">std::vector&lt;std::string&gt; simSwapTextures(const std::string&amp; tags, int tex_id);</code></pre>
-<p>The string of "," or ", " delimited tags identifies on which actors to perform the swap.
-The tex_id indexes the array of textures assigned to each actor undergoing a swap.
-The function will return the list of objects which matched the provided tags and had the texture swap perfomed.
-If tex_id is out-of-bounds for some object's texture set, it will be taken modulo the number of textures that were available.</p>
-<p>Demo (Python):</p>
-<pre class="highlight"><code class="language-Python">import airsim
-import time
+                <h1 id="modifying-recording-data">Modifying Recording Data<a class="headerlink" href="#modifying-recording-data" title="Permanent link">#</a></h1>
+<p>AirSim has a <a href="../settings/#recording">Recording feature</a> to easily collect data and images. The <a href="../apis/#recording-apis">Recording APIs</a> also allows starting and stopping the recording using API.</p>
+<p>However, the data recorded by default might not be sufficient for your use cases, and it might be preferable to record additional data such as IMU, GPS sensors, Rotor speed for copters, etc. You can use the existing Python and C++ APIs to get the information and store it as required, especially for Lidar. Another option for adding small fields such as GPS or internal data such as Unreal position or something else is possible through modifying the recording methods inside AirSim. This page describes the specific methods which you might need to change.</p>
+<p>The recorded data is written in a <code>airsim_rec.txt</code> file in a tab-separated format, with images in an <code>images/</code> folder. The entire folder is by default present in the <code>Documents</code> folder (or specified in settings) with the timestamp of when the recording started in <code>%Y-%M-%D-%H-%M-%S</code> format.</p>
+<p>Car vehicle records the following fields -</p>
+<pre class="highlight"><code class="language-text">VehicleName TimeStamp   POS_X   POS_Y   POS_Z   Q_W Q_X Q_Y Q_Z Throttle    Steering    Brake   Gear    Handbrake   RPM Speed   ImageFile</code></pre>
+<p>For Multirotor -</p>
+<pre class="highlight"><code class="language-text">VehicleName TimeStamp   POS_X   POS_Y   POS_Z   Q_W Q_X Q_Y Q_Z ImageFile</code></pre>
+<h2 id="code-changes">Code Changes<a class="headerlink" href="#code-changes" title="Permanent link">#</a></h2>
+<p>Note that this requires building and using AirSim from source. You can compile a binary yourself after modifying if needed.</p>
+<p>The primary method which fills the data to be stored is <a href="https://github.com/microsoft/AirSim/blob/880c5541fd4824ee2cd9bb82ca5f611eb1ab236a/Unreal/Plugins/AirSim/Source/PawnSimApi.cpp#L544"><code>PawnSimApi::getRecordFileLine</code></a>, it's the base method for all the vehicles, and Car overrides it to log additional data, as can be seen in <a href="https://github.com/microsoft/AirSim/blob/880c5541fd4824ee2cd9bb82ca5f611eb1ab236a/Unreal/Plugins/AirSim/Source/Vehicles/Car/CarPawnSimApi.cpp#L34"><code>CarPawnSimApi::getRecordFileLine</code></a>.</p>
+<p>To record additional data for multirotor, you can add a similar method in <a href="https://github.com/microsoft/AirSim/tree/master/Unreal/Plugins/AirSim/Source/Vehicles/Multirotor">MultirotorPawnSimApi.cpp/h</a> files which overrides the base class implementation and append other data. The currently logged data can also be modified and removed as needed.</p>
+<p>E.g. recording GPS, IMU and Barometer data also for multirotor -</p>
+<pre class="highlight"><code class="language-cpp">// MultirotorPawnSimApi.cpp
+std::string MultirotorPawnSimApi::getRecordFileLine(bool is_header_line) const
+{
+    std::string common_line = PawnSimApi::getRecordFileLine(is_header_line);
+    if (is_header_line) {
+        return common_line +
+               "Latitude\tLongitude\tAltitude\tPressure\tAccX\tAccY\tAccZ\t";
+    }
 
-c = airsim.client.MultirotorClient()
-print(c.simSwapTextures("furniture", 0))
-time.sleep(2)
-print(c.simSwapTextures("chair", 1))
-time.sleep(2)
-print(c.simSwapTextures("table", 1))
-time.sleep(2)
-print(c.simSwapTextures("chair, right", 0))</code></pre>
-<p>Results:</p>
-<pre class="highlight"><code class="language-bash">['RetexturableChair', 'RetexturableChair2', 'RetexturableTable']
-['RetexturableChair', 'RetexturableChair2']
-['RetexturableTable']
-['RetexturableChair2']</code></pre>
-<p><img alt="Demo" src="../images/tex_swap_demo.gif" /></p>
-<p>Note that in this example, different textures were chosen on each actor for the same index value.</p>
+    const auto&amp; state = vehicle_api_-&gt;getMultirotorState();
+    const auto&amp; bar_data = vehicle_api_-&gt;getBarometerData("");
+    const auto&amp; imu_data = vehicle_api_-&gt;getImuData("");
+
+    std::ostringstream ss;
+    ss &lt;&lt; common_line;
+    ss &lt;&lt; state.gps_location.latitude &lt;&lt; "\t" &lt;&lt; state.gps_location.longitude &lt;&lt; "\t"
+       &lt;&lt; state.gps_location.altitude &lt;&lt; "\t";
+
+    ss &lt;&lt; bar_data.pressure &lt;&lt; "\t";
+
+    ss &lt;&lt; imu_data.linear_acceleration.x() &lt;&lt; "\t" &lt;&lt; imu_data.linear_acceleration.y() &lt;&lt; "\t"
+       &lt;&lt; imu_data.linear_acceleration.z() &lt;&lt; "\t";
+
+    return ss.str();
+}</code></pre>
+<pre class="highlight"><code class="language-cpp">// MultirotorPawnSimApi.h
+virtual std::string getRecordFileLine(bool is_header_line) const override;</code></pre>
               
             </div>
           </div>
@@ -361,10 +354,10 @@ print(c.simSwapTextures("chair, right", 0))</code></pre>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../meshes/" class="btn btn-neutral float-right" title="Mesh Vertex Buffers">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../coding_guidelines/" class="btn btn-neutral float-right" title="Coding Guidelines">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../gazebo_drone/" class="btn btn-neutral" title="Import Gazebo models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../adding_new_apis/" class="btn btn-neutral" title="Adding new APIs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -396,10 +389,10 @@ print(c.simSwapTextures("chair, right", 0))</code></pre>
         </span>
     
     
-      <span><a href="../gazebo_drone/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../adding_new_apis/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../meshes/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../coding_guidelines/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
