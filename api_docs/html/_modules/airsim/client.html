@@ -256,7 +256,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;simSwapTextures&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">tex_id</span><span class="p">,</span> <span class="n">component_id</span><span class="p">,</span> <span class="n">material_id</span><span class="p">)</span></div>
 
-<span class="c1">#time - of - day control</span>
 <div class="viewcode-block" id="VehicleClient.simSetObjectMaterial"><a class="viewcode-back" href="../../index.html#airsim.client.VehicleClient.simSetObjectMaterial">[docs]</a>    <span class="k">def</span> <span class="nf">simSetObjectMaterial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">material_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Runtime Swap Texture API</span>
@@ -285,7 +284,6 @@
 
 
     <span class="c1"># time-of-day control</span>
-    
 <div class="viewcode-block" id="VehicleClient.simSetTimeOfDay"><a class="viewcode-back" href="../../index.html#airsim.client.VehicleClient.simSetTimeOfDay">[docs]</a>    <span class="k">def</span> <span class="nf">simSetTimeOfDay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_enabled</span><span class="p">,</span> <span class="n">start_datetime</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">is_start_datetime_dst</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">celestial_clock_speed</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">update_interval_secs</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">move_sun</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Control the position of Sun in the environment</span>
@@ -441,7 +439,6 @@
         <span class="k">return</span> <span class="n">result</span></div>
 
 <span class="c1">#End CinemAirSim     </span>
-
 <div class="viewcode-block" id="VehicleClient.simTestLineOfSightToPoint"><a class="viewcode-back" href="../../index.html#airsim.client.VehicleClient.simTestLineOfSightToPoint">[docs]</a>    <span class="k">def</span> <span class="nf">simTestLineOfSightToPoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">vehicle_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns whether the target point is visible from the perspective of the inputted vehicle</span>
