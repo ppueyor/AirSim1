@@ -827,6 +827,20 @@ Returns Segmentation ID of each point’s collided object in the last Lidar upda
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="airsim.client.VehicleClient.simListAssets">
+<span class="sig-name descname"><span class="pre">simListAssets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simListAssets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simListAssets" title="Permalink to this definition"></a></dt>
+<dd><p>Lists all the assets present in the Asset Registry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Names of all the assets</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="airsim.client.VehicleClient.simListSceneObjects">
 <span class="sig-name descname"><span class="pre">simListSceneObjects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_regex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simListSceneObjects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simListSceneObjects" title="Permalink to this definition"></a></dt>
 <dd><p>Lists the objects present in the environment</p>
@@ -1141,6 +1155,80 @@ Allows the user to create bespoke APIs very easily, by adding a custom event to 
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="airsim.client.VehicleClient.simSetKinematics">
+<span class="sig-name descname"><span class="pre">simSetKinematics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_collision</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simSetKinematics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simSetKinematics" title="Permalink to this definition"></a></dt>
+<dd><p>Set the kinematics state of the vehicle</p>
+<p>If you don’t want to change position (or orientation) then just set components of position (or orientation) to floating point nan values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="#airsim.types.KinematicsState" title="airsim.types.KinematicsState"><em>KinematicsState</em></a>) – Desired Pose pf the vehicle</p></li>
+<li><p><strong>ignore_collision</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether to ignore any collision or not</p></li>
+<li><p><strong>vehicle_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Name of the vehicle to move</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airsim.client.VehicleClient.simSetLightIntensity">
+<span class="sig-name descname"><span class="pre">simSetLightIntensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">light_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simSetLightIntensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simSetLightIntensity" title="Permalink to this definition"></a></dt>
+<dd><p>Change intensity of named light</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>light_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of light to change</p></li>
+<li><p><strong>intensity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – New intensity value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful, otherwise False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airsim.client.VehicleClient.simSetObjectMaterial">
+<span class="sig-name descname"><span class="pre">simSetObjectMaterial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simSetObjectMaterial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simSetObjectMaterial" title="Permalink to this definition"></a></dt>
+<dd><p>Runtime Swap Texture API
+See <a class="reference external" href="https://microsoft.github.io/AirSim/retexturing/">https://microsoft.github.io/AirSim/retexturing/</a> for details
+:param object_name: name of object to set material for
+:type object_name: str
+:param material_name: name of material to set for object
+:type material_name: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if material was set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airsim.client.VehicleClient.simSetObjectMaterialFromTexture">
+<span class="sig-name descname"><span class="pre">simSetObjectMaterialFromTexture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simSetObjectMaterialFromTexture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simSetObjectMaterialFromTexture" title="Permalink to this definition"></a></dt>
+<dd><p>Runtime Swap Texture API
+See <a class="reference external" href="https://microsoft.github.io/AirSim/retexturing/">https://microsoft.github.io/AirSim/retexturing/</a> for details
+:param object_name: name of object to set material for
+:type object_name: str
+:param texture_path: path to texture to set for object
+:type texture_path: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if material was set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="airsim.client.VehicleClient.simSetObjectPose">
 <span class="sig-name descname"><span class="pre">simSetObjectPose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teleport</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simSetObjectPose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simSetObjectPose" title="Permalink to this definition"></a></dt>
 <dd><p>Set the pose of the object(actor) in the environment</p>
@@ -1298,7 +1386,7 @@ so Sun will move in sky much faster</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="airsim.client.VehicleClient.simSpawnObject">
-<span class="sig-name descname"><span class="pre">simSpawnObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physics_enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simSpawnObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simSpawnObject" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">simSpawnObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physics_enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_blueprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#VehicleClient.simSpawnObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.VehicleClient.simSpawnObject" title="Permalink to this definition"></a></dt>
 <dd><p>Spawned selected object in the world</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1307,6 +1395,8 @@ so Sun will move in sky much faster</p></li>
 <li><p><strong>asset_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of asset(mesh) in the project database</p></li>
 <li><p><strong>pose</strong> (<em>airsim.Pose</em>) – Desired pose of object</p></li>
 <li><p><strong>scale</strong> (<em>airsim.Vector3r</em>) – Desired scale of object</p></li>
+<li><p><strong>physics_enabled</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to enable physics for the object</p></li>
+<li><p><strong>is_blueprint</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to spawn a blueprint or an actor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1663,7 +1753,7 @@ then that RC state would be ignored.</p>
 <span class="sig-name descname"><span class="pre">moveByRollPitchYawThrottleAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roll</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">throttle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#MultirotorClient.moveByRollPitchYawThrottleAsync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.MultirotorClient.moveByRollPitchYawThrottleAsync" title="Permalink to this definition"></a></dt>
 <dd><ul>
 <li><p>Desired throttle is between 0.0 to 1.0</p></li>
-<li><p>Roll angle, pitch angle, and yaw angle are given in <strong>radians</strong>, in the body frame.</p></li>
+<li><p>Roll angle, pitch angle, and yaw angle are given in <strong>degrees</strong> when using PX4 and in <strong>radians</strong> when using SimpleFlight, in the body frame.</p></li>
 <li><p>The body frame follows the Front Left Up (FLU) convention, and right-handedness.</p></li>
 <li><dl>
 <dt>Frame Convention:</dt><dd><ul class="simple">
@@ -1694,9 +1784,9 @@ then that RC state would be ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>roll</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired roll angle, in radians.</p></li>
-<li><p><strong>pitch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired pitch angle, in radians.</p></li>
-<li><p><strong>yaw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired yaw angle, in radians.</p></li>
+<li><p><strong>roll</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired roll angle.</p></li>
+<li><p><strong>pitch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired pitch angle.</p></li>
+<li><p><strong>yaw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired yaw angle.</p></li>
 <li><p><strong>throttle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired throttle (between 0.0 to 1.0)</p></li>
 <li><p><strong>duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Desired amount of time (seconds), to send this command for</p></li>
 <li><p><strong>vehicle_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Name of the multirotor to send this command to</p></li>
@@ -1950,6 +2040,11 @@ then that RC state would be ignored.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="airsim.client.MultirotorClient.moveOnPathAsync">
 <span class="sig-name descname"><span class="pre">moveOnPathAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_sec=3e+38</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drivetrain=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw_mode=&lt;YawMode&gt;</span> <span class="pre">{</span>&#160;&#160; <span class="pre">'is_rate':</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'yaw_or_rate':</span> <span class="pre">0.0}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookahead=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_lookahead=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name=''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#MultirotorClient.moveOnPathAsync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.MultirotorClient.moveOnPathAsync" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airsim.client.MultirotorClient.moveToGPSAsync">
+<span class="sig-name descname"><span class="pre">moveToGPSAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">altitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_sec=3e+38</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drivetrain=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw_mode=&lt;YawMode&gt;</span> <span class="pre">{</span>&#160;&#160; <span class="pre">'is_rate':</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'yaw_or_rate':</span> <span class="pre">0.0}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookahead=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_lookahead=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name=''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/airsim/client.html#MultirotorClient.moveToGPSAsync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#airsim.client.MultirotorClient.moveToGPSAsync" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
