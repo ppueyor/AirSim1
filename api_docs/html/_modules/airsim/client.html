@@ -284,6 +284,7 @@
 
 
     <span class="c1"># time-of-day control</span>
+<span class="c1">#time - of - day control</span>
 <div class="viewcode-block" id="VehicleClient.simSetTimeOfDay"><a class="viewcode-back" href="../../index.html#airsim.client.VehicleClient.simSetTimeOfDay">[docs]</a>    <span class="k">def</span> <span class="nf">simSetTimeOfDay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_enabled</span><span class="p">,</span> <span class="n">start_datetime</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">is_start_datetime_dst</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">celestial_clock_speed</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">update_interval_secs</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">move_sun</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Control the position of Sun in the environment</span>
@@ -371,6 +372,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">responses_raw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s1">&#39;simGetImages&#39;</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">vehicle_name</span><span class="p">,</span> <span class="n">external</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">ImageResponse</span><span class="o">.</span><span class="n">from_msgpack</span><span class="p">(</span><span class="n">response_raw</span><span class="p">)</span> <span class="k">for</span> <span class="n">response_raw</span> <span class="ow">in</span> <span class="n">responses_raw</span><span class="p">]</span></div>
+
+
 
 <span class="c1">#CinemAirSim</span>
 <div class="viewcode-block" id="VehicleClient.simGetPresetLensSettings"><a class="viewcode-back" href="../../index.html#airsim.client.VehicleClient.simGetPresetLensSettings">[docs]</a>    <span class="k">def</span> <span class="nf">simGetPresetLensSettings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera_name</span><span class="p">,</span> <span class="n">vehicle_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">external</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>  
